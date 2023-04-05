@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://6miupej8jd4i"]
+
+[ext_resource type="Script" path="res://addons/astar2d_grid_node/examples/simple_example_01/simple_example_01.gd" id="1_btpoa"]
+[ext_resource type="Script" path="res://addons/astar2d_grid_node/astar2d_grid_node.gd" id="2_08x05"]
+[ext_resource type="PackedScene" uid="uid://bjs7l1x48y1ad" path="res://addons/astar2d_grid_node/examples/simple_example_01/simple_troop.tscn" id="3_21laa"]
+
+[node name="simple_example_01" type="Node2D"]
+script = ExtResource("1_btpoa")
+
+[node name="AStar2DGridNode" type="Node2D" parent="."]
+script = ExtResource("2_08x05")
+grid_size = Vector2i(37, 21)
+cell_size = Vector2(32, 32)
+
+[node name="SimpleTroop" parent="." instance=ExtResource("3_21laa")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

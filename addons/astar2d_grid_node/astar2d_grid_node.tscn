@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmsbntx0y201s"]
+
+[ext_resource type="Script" path="res://addons/astar2d_grid_node/astar2d_grid_node.gd" id="1_kx6nn"]
+
+[node name="AStar2DGridNode" type="Node2D"]
+script = ExtResource("1_kx6nn")
+enable_grid_during_play = null
