@@ -4,4 +4,3 @@
 
 [node name="AStar2DGridNode" type="Node2D"]
 script = ExtResource("1_kx6nn")
-enable_grid_during_play = null

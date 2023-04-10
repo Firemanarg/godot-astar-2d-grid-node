@@ -8,8 +8,9 @@
 script = ExtResource("1_btpoa")
 
 [node name="AStar2DGridNode" type="Node2D" parent="."]
+position = Vector2(48, 48)
 script = ExtResource("2_08x05")
-grid_size = Vector2i(37, 21)
+grid_size = Vector2i(32, 18)
 cell_size = Vector2(32, 32)
 
 [node name="SimpleTroop" parent="." instance=ExtResource("3_21laa")]
