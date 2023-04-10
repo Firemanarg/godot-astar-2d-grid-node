@@ -41,11 +41,11 @@ func _draw():
 func _draw_points() -> void:
 	for x in range(grid.size.x):
 		for y in range(grid.size.y):
-			var point: Vector2i = Vector2i(x, y)
+			var point: Vector2 = Vector2(x, y)
 			if grid.is_point_solid(point):
-				_draw_disabled_point(grid.get_point_position(point))
+				_draw_disabled_point(point * cell_size)
 			else:
-				_draw_point(grid.get_point_position(point))
+				_draw_point(point * cell_size)
 
 
 func _draw_point(point: Vector2i) -> void:
@@ -63,6 +63,8 @@ func _update_grid() -> void:
 		grid.size = grid_size
 	if not cell_size == grid.cell_size:
 		grid.cell_size = cell_size
+	if not grid.offset == position:
+		grid.offset = position
 	if grid.is_dirty():
 		grid.update()
 	_redraw_grid()
@@ -89,8 +91,7 @@ func _set_disabled_point_fill_color(new_value: Color) -> void:
 
 
 func _redraw_grid() -> void:
-	if Engine.is_editor_hint() or enable_grid_during_play:
-		queue_redraw()
+	queue_redraw()
 
 
 func set_enable_grid_during_play(new_value: bool) -> void:
@@ -131,13 +132,12 @@ func get_disabled_points() -> Array[Vector2i]:
 
 
 func get_nearest_id(pos: Vector2) -> Vector2i:
+	var offset_pos: Vector2 = pos - global_position
 	var id: Vector2i
 
-	id = Vector2i(
-		clamp(round(pos.x / (cell_size.x * 1.0)), 0, grid.size.x - 1),
-		clamp(round(pos.y / (cell_size.y * 1.0)), 0, grid.size.y - 1)
-	)
-	id.clamp(Vector2.ZERO, grid.size)
+	id = Vector2i(round(offset_pos / cell_size))
+	id.x = clamp(id.x, 0, grid_size.x - 1)
+	id.y = clamp(id.y, 0, grid_size.y - 1)
 	return (id)
 
 
