@@ -19,8 +19,10 @@ func _physics_process(delta):
 		direction = (target - global_position).normalized()
 		velocity = direction * SPEED
 		move_and_slide()
-	if global_position.distance_to(target) < 3:
-		_movement_path.pop_front()
+		if global_position.distance_to(target) < 3:
+			_movement_path.pop_front()
+	else:
+		velocity = Vector2.ZERO
 
 
 func set_movement_path(new_path: Array):
