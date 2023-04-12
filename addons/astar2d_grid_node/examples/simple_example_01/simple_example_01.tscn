@@ -12,6 +12,7 @@ position = Vector2(48, 48)
 script = ExtResource("2_08x05")
 grid_size = Vector2i(32, 18)
 cell_size = Vector2(32, 32)
+debug_editor_only = false
 
 [node name="SimpleTroop" parent="." instance=ExtResource("3_21laa")]
 
