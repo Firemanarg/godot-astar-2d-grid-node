@@ -4,3 +4,11 @@
 
 [node name="AStar2DGridNode" type="Node2D"]
 script = ExtResource("1_kx6nn")
+enable_debug = null
+debug_editor_only = null
+debug_point_size = null
+debug_point_border_size = null
+enabled_point_fill_color = null
+enabled_point_border_color = null
+disabled_point_fill_color = null
+disabled_point_border_color = null
