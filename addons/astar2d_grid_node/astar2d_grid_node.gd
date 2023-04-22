@@ -3,6 +3,7 @@ extends Node2D
 class_name AStar2DGridNode
 
 
+##
 ## A simple node implementation for the abstract class [AStarGrid2D], used
 ## for a better performance pathfinding.
 ##
@@ -103,16 +104,16 @@ func get_nearest_real_id(pos: Vector2) -> Vector2i:
 	return (id)
 
 
-## Calculate and return a path of points as an [Array], considering
-## [code]from[/code] as start point and [code]to[/code] as destination
-## point. Both arguments must use global coordinates. Each point of path is
-## a [Vector2] containing the global coordinates of the grid point.
-func calculate_point_path(from: Vector2, to: Vector2) -> Array:
-	var path: Array = []
+## Calculate and return a path of points as an [PackedVector2Array],
+## considering [code]from[/code] as start point and [code]to[/code] as
+## destination point. Both arguments must use global coordinates. Each point
+## of path is a [Vector2] containing the global coordinates of the grid point.
+func calculate_point_path(from: Vector2, to: Vector2) -> PackedVector2Array:
+	var path: PackedVector2Array = []
 	var from_id: Vector2i = get_nearest_id(from)
 	var to_id: Vector2i = get_nearest_id(to)
 
-	path = Array(grid.get_point_path(from_id, to_id))
+	path = grid.get_point_path(from_id, to_id)
 	return (path)
 
 
@@ -177,8 +178,8 @@ func enable_points(ids: Array[Vector2i]) -> void:
 	_redraw_grid()
 
 
-## Return an Array containing the IDs of the points overlapped by
-## given rect (global coords)
+## Return an [Array] of [Vector2i] containing the IDs of the points overlapped
+## by given [code]rect[/code] (global coords).
 func get_id_list_inside_rect(rect: Rect2) -> Array[Vector2i]:
 	var ids: Array[Vector2i] = []
 	var start_id: Vector2i = get_nearest_id(rect.position)
@@ -188,6 +189,25 @@ func get_id_list_inside_rect(rect: Rect2) -> Array[Vector2i]:
 		for y in range(start_id.y, end_id.y + 1):
 			var id: Vector2i = Vector2i(x, y)
 			ids.append(id)
+	return (ids)
+
+
+## Return an [Array] of [Vector2i] containing the IDs of the points overlapped
+## by given circle ([code]origin[/code] use global coords).
+func get_id_list_inside_circle(origin: Vector2, radius: float) -> Array[Vector2i]:
+	var ids: Array[Vector2i] = []
+	var rect: Rect2 = Rect2(origin - Vector2(radius, radius), Vector2(2, 2) * radius)
+	var start_id: Vector2i = get_nearest_id(rect.position)
+	var end_id: Vector2i = get_nearest_id(rect.end)
+
+	for x in range(start_id.x, end_id.x + 1):
+		for y in range(start_id.y, end_id.y + 1):
+			var id: Vector2i = Vector2i(x, y)
+			var pos: Vector2 = grid.get_point_position(id)
+			var dist: float = origin.distance_to(pos)
+
+			if dist <= radius:
+				ids.append(id)
 	return (ids)
 
 
@@ -201,6 +221,12 @@ func get_local_rect() -> Rect2:
 func get_global_rect() -> Rect2:
 	var rect: Rect2 = Rect2(global_position, Vector2(grid_size) * cell_size)
 	return (rect)
+
+
+## Return the position of the point with given [code]id[/code].
+func get_point_position(id: Vector2i) -> Vector2:
+	return (grid.get_point_position(id))
+
 
 # --- Getters and Setters ------------------------------------------------------
 
