@@ -85,7 +85,9 @@ func _draw():
 # ------------------------------------------------------------------------------
 
 ## Returns the nearest valid id of given coords. If coord is out of grid,
-## a border nearest point inside the grid is returned
+## a border nearest point inside the grid is returned.
+## [br][br][b]See also:[/b]
+## [method get_nearest_real_id].
 func get_nearest_id(pos: Vector2) -> Vector2i:
 	var id: Vector2i = get_nearest_real_id(pos)
 
@@ -94,8 +96,10 @@ func get_nearest_id(pos: Vector2) -> Vector2i:
 	return (id)
 
 
-## Return the nearest id of given coords, even if the coord is out of grid.
-## (return value can contain negative values)
+## Return the nearest id of given coords, even if the coord is out of grid
+## (return value can contain negative values).
+## [br][br][b]See also:[/b]
+## [method get_nearest_id].
 func get_nearest_real_id(pos: Vector2) -> Vector2i:
 	var offset_pos: Vector2 = pos - global_position
 	var id: Vector2i
@@ -108,6 +112,8 @@ func get_nearest_real_id(pos: Vector2) -> Vector2i:
 ## considering [code]from[/code] as start point and [code]to[/code] as
 ## destination point. Both arguments must use global coordinates. Each point
 ## of path is a [Vector2] containing the global coordinates of the grid point.
+## [br][br][b]See also:[/b]
+## [method calculate_point_path_by_id].
 func calculate_point_path(from: Vector2, to: Vector2) -> PackedVector2Array:
 	var path: PackedVector2Array = []
 	var from_id: Vector2i = get_nearest_id(from)
@@ -126,7 +132,8 @@ func calculate_point_path(from: Vector2, to: Vector2) -> PackedVector2Array:
 ## calculate_point_path(get_nearest_id(from), get_nearest_id(to)
 ## [/codeblock]
 ## [br][br][b]See also:[/b]
-## [method calculate_point_path], [method get_nearest_id]
+## [method calculate_point_path], [method get_nearest_id],
+## [method get_nearest_id].
 func calculate_point_path_by_id(from_id: Vector2i, to_id: Vector2i) -> Array:
 	var path: Array = []
 
