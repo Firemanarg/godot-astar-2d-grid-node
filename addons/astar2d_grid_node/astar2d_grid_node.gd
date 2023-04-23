@@ -187,10 +187,11 @@ func enable_points(ids: Array[Vector2i]) -> void:
 
 ## Return an [Array] of [Vector2i] containing the IDs of the points overlapped
 ## by given [code]rect[/code] (global coords).
-func get_id_list_inside_rect(rect: Rect2) -> Array[Vector2i]:
+func get_id_list_inside_rect(rect: Rect2, margin: float = 0.0) -> Array[Vector2i]:
+	var margin_vec: Vector2 = Vector2(margin, margin)
 	var ids: Array[Vector2i] = []
-	var start_id: Vector2i = get_nearest_id(rect.position)
-	var end_id: Vector2i = get_nearest_id(rect.end)
+	var start_id: Vector2i = get_nearest_id(rect.position - margin_vec)
+	var end_id: Vector2i = get_nearest_id(rect.end + margin_vec)
 
 	for x in range(start_id.x, end_id.x + 1):
 		for y in range(start_id.y, end_id.y + 1):
@@ -201,9 +202,13 @@ func get_id_list_inside_rect(rect: Rect2) -> Array[Vector2i]:
 
 ## Return an [Array] of [Vector2i] containing the IDs of the points overlapped
 ## by given circle ([code]origin[/code] use global coords).
-func get_id_list_inside_circle(origin: Vector2, radius: float) -> Array[Vector2i]:
+func get_id_list_inside_circle(origin: Vector2, radius: float,
+		margin: float = 0.0) -> Array[Vector2i]:
+	var radius_vec: Vector2 = Vector2(radius, radius)
+	var margin_vec: Vector2 = Vector2(margin, margin)
 	var ids: Array[Vector2i] = []
-	var rect: Rect2 = Rect2(origin - Vector2(radius, radius), Vector2(2, 2) * radius)
+	var rect: Rect2 = Rect2(origin - radius_vec - margin_vec,
+								2 * (radius_vec + margin_vec))
 	var start_id: Vector2i = get_nearest_id(rect.position)
 	var end_id: Vector2i = get_nearest_id(rect.end)
 
@@ -213,7 +218,7 @@ func get_id_list_inside_circle(origin: Vector2, radius: float) -> Array[Vector2i
 			var pos: Vector2 = grid.get_point_position(id)
 			var dist: float = origin.distance_to(pos)
 
-			if dist <= radius:
+			if dist <= radius + margin:
 				ids.append(id)
 	return (ids)
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1r6fmbhec2xl"]
+
+[ext_resource type="Texture2D" uid="uid://duyfuxemy15et" path="res://addons/astar2d_grid_node/examples/common/atlas.png" id="1_mfbhk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lllp7"]
+atlas = ExtResource("1_mfbhk")
+region = Rect2(112, 16, 64, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7p8h"]
+size = Vector2(60, 36)
+
+[node name="ObstacleHouse" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+texture = SubResource("AtlasTexture_lllp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p7p8h")
+debug_color = Color(1, 0, 0.129412, 0.419608)

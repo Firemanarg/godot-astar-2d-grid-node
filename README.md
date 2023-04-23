@@ -1,12 +1,16 @@
 # godot-astar-2d-grid-node
  A simple implementation of a Node for the abstract class AStar2DGrid, that can be used to implement pathfinding.
- 
+
  <p align="center">
   <img src="https://user-images.githubusercontent.com/35619327/230246342-35f547c4-81d1-4563-82ac-4fbc83a3a2f1.png" />
 </p>
- 
+
 ## Preview
 ![image](https://user-images.githubusercontent.com/35619327/230228416-f8c07b26-a176-4230-8ff2-17583e7efdc5.png)
+
+## Examples
+* Example 01 - Simple Movement
+* Example 02 - Scenery obstacles with point disable
 
 ## Nodes
 * AStar2DGridNode
@@ -37,3 +41,7 @@
 * ```void disable_point(id: Vector2i)```
 * ```void enable_point(id: Vector2i)```
 * ```Vector2i get_nearest_id(pos: Vector2)```
+
+## Credits
+#### Generic RPG pack by Estudio Vaca Roxa (used in examples):
+https://bakudas.itch.io/generic-rpg-pack
