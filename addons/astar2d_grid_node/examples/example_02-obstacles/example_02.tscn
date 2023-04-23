@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkjpj1hanuprx"]
+[gd_scene load_steps=11 format=3 uid="uid://dkjpj1hanuprx"]
 
 [ext_resource type="TileSet" uid="uid://triwh4caokk1" path="res://addons/astar2d_grid_node/examples/common/tileset.tres" id="1_c67mn"]
 [ext_resource type="Script" path="res://addons/astar2d_grid_node/examples/example_02-obstacles/example_02.gd" id="1_lgr0i"]
@@ -6,6 +6,18 @@
 [ext_resource type="Script" path="res://addons/astar2d_grid_node/astar2d_grid_node.gd" id="2_qwjqa"]
 [ext_resource type="PackedScene" uid="uid://b1r6fmbhec2xl" path="res://addons/astar2d_grid_node/examples/common/obstacle_house.tscn" id="2_vtq6u"]
 [ext_resource type="PackedScene" uid="uid://b4rhajhjs8u8w" path="res://addons/astar2d_grid_node/examples/common/character.tscn" id="3_spspn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv5c0"]
+size = Vector2(24, 154)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6neip"]
+size = Vector2(24, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rb7s3"]
+size = Vector2(72, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibkkr"]
+size = Vector2(44, 26)
 
 [node name="Example02" type="Node2D"]
 script = ExtResource("1_lgr0i")
@@ -82,6 +94,41 @@ color = "Red"
 y_sort_enabled = true
 position = Vector2(58, 310)
 color = "Red"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(224, 81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D"]
+shape = SubResource("RectangleShape2D_dv5c0")
+debug_color = Color(0.827451, 0, 0.168627, 0.580392)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(224, 244)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_6neip")
+debug_color = Color(0.827451, 0, 0.168627, 0.580392)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(218, 317)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_rb7s3")
+debug_color = Color(0.827451, 0, 0.168627, 0.580392)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(122, 308)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_ibkkr")
+debug_color = Color(0.827451, 0, 0.168627, 0.580392)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(393, 258)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody2D5"]
+shape = SubResource("RectangleShape2D_ibkkr")
+debug_color = Color(0.827451, 0, 0.168627, 0.580392)
 
 [node name="Character" parent="." instance=ExtResource("3_spspn")]
 y_sort_enabled = true

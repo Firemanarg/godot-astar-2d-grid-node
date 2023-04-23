@@ -76,8 +76,9 @@ func _process(delta):
 
 
 func _draw():
-	if Engine.is_editor_hint() or not debug_editor_only:
-		_draw_points()
+	if enable_debug:
+		if Engine.is_editor_hint() or not debug_editor_only:
+			_draw_points()
 
 
 # ------------------------------------------------------------------------------
