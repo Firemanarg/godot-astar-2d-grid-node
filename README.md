@@ -17,21 +17,22 @@
 
 ### AStar2DGridNode
 #### Properties
-* ```AStarGrid2D grid``` _[ default: AStarGrid2D.new() ]_
-* ```Vector2i grid_size``` _[ default: Vector2i(32, 32) ]_
-* ```Vector2 cell_size``` _[ default: Vector2(16, 16) ]_
-* ```Array[Vector2i] disabled_points``` _[ default: [ ] ]_
-* ```bool enable_grid_during_play``` _[ default: false ]_
+##### Default
+* ```AStarGrid2D grid``` _[ default: AStarGrid2D.new() ]_ _[getter, setter]_
+* ```Vector2i grid_size``` _[ default: Vector2i(32, 32) ]_ _[getter, setter]_
+* ```Vector2 cell_size``` _[ default: Vector2(16, 16) ]_ _[getter, setter]_
+* ```Array[Vector2i] disabled_points``` _[ default: [ ] ]_ _[getter, setter]_
+##### Debug
+* ```bool enable_debug``` _[ default: true ]_ _[ getter, setter ]_
+* ```bool debug_editor_only``` _[ default: true ]_ _[ getter, setter ]_
+* ```float debug_point_size``` _[ default: 2.0 ]_ _[ getter, setter ]_
+* ```float debug_point_border_size``` _[ default: 0.5 ]_ _[ getter, setter ]_
+* ```Color enabled_point_fill_color``` _[ default: Color.SALMON ]_ _[ getter, setter ]_
+* ```Color enabled_point_border_color``` _[ default: Color.WHITE ]_ _[ getter, setter ]_
+* ```Color disabled_point_fill_color``` _[ default: Color.SLATE_GRAY ]_ _[ getter, setter ]_
+* ```Color disabled_point_border_color``` _[ default: Color.WHITE ]_ _[ getter, setter ]_
 
 #### Methods
-##### Getters & Setters
-* ```Vector2i get_grid_size()```
-* ```Array[Vector2i] get_disabled_points()```
-* ```Vector2 get_cell_size()```
-* ```void set_enable_grid_during_play(new_value: bool)```
-* ```void set_grid_size(new_value: Vector2i)```
-* ```void set_cell_size(new_value: Vector2)```
-* ```void set_disabled_points(new_value: Array[Vector2i])```
 ##### Path Calculators
 * ```Array calculate_point_path(from: Vector2, to: Vector2)```
 * ```Array calculate_point_path_by_id(from_id: Vector2i, to_id: Vector2i)```
@@ -40,7 +41,15 @@
 ##### Utils
 * ```void disable_point(id: Vector2i)```
 * ```void enable_point(id: Vector2i)```
+* ```void disable_points(ids: Array[Vector2i])```
+* ```void enable_points(ids: Array[Vector2i])```
 * ```Vector2i get_nearest_id(pos: Vector2)```
+* ```Vector2i get_nearest_real_id(pos: Vector2)```
+* ```Array[Vector2i] get_id_list_inside_rect(rect: Rect2, margin)```
+* ```Array[Vector2i] get_id_list_inside_circle(origin: Vector2, radius: float, margin: float = 0.0)```
+* ```Rect2 get_local_rect()```
+* ```Rect2 get_global_rect()```
+* ```Vector2 get_point_position```
 
 ## Credits
 #### Generic RPG pack by Estudio Vaca Roxa (used in examples):
