@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpre7763tyiqu"]
+
+[ext_resource type="Script" path="res://addons/astar2d_grid_node/examples/common/obstacle_tree.gd" id="1_ifjc7"]
+[ext_resource type="Texture2D" uid="uid://duyfuxemy15et" path="res://addons/astar2d_grid_node/examples/common/atlas.png" id="1_syuxs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnl3n"]
+atlas = ExtResource("1_syuxs")
+region = Rect2(72, 160, 128, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5p7lu"]
+radius = 9.05539
+
+[node name="ObstacleTree" type="StaticBody2D"]
+script = ExtResource("1_ifjc7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -30)
+texture = SubResource("AtlasTexture_tnl3n")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -3)
+shape = SubResource("CircleShape2D_5p7lu")
+debug_color = Color(0.996078, 0, 0.168627, 0.419608)
