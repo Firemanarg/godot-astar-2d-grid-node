@@ -1,4 +1,4 @@
-# godot-astar-2d-grid-node
+# Godot Astar2DGridNode
  A simple implementation of a Node for the abstract class AStar2DGrid, that can be used to implement pathfinding.
  ##### Link to the Godot Asset Library addon page:
 * https://godotengine.org/asset-library/asset/1799
